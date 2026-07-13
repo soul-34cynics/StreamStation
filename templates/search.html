@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stream Station 🎵</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/banner.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/title.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    /* Style for Floating Mic Button 🎤 */
+    #mic-btn {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      z-index: 1000;
+      background-color: #6200ea;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      cursor: pointer;
+    }
+
+    #mic-btn:hover {
+      background-color: #7b1fa2;
+    }
+  </style>
+</head>
+<body>
+  {% include 'components/banner.html' %}
+  {% include 'components/title.html' %}
+  <!-- 🌈 Hero Banner Section -->
+  <section class="hero">
+    <div class="hero-overlay">
+      <h1 class="hero-title">Sampletext</h1>
+      <p class="hero-subtitle">Sampletext</p>
+      <div class="hero-buttons">
+        <!-- <a href="/mood"><button>Mood Detector 🧠</button></a>
+        <a href="/videos"><button>🎥 Videos</button></a> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔍 Search Bar Section -->
+  <div class="centered-search">
+    <input type="text" placeholder="Search songs..." id="searchInput" onkeyup="filterSongs()">
+  </div>
+
+  <!-- 🎵 Songs Section -->
+  <main>
+    <div class="song-container" id="songContainer">
+      {% for song in songs %}
+      <div class="song-card">
+        <img src="{{ song.cover }}" alt="{{ song.title }} Cover" class="album-cover">
+        <h3>{{ song.title }}</h3>
+        <audio id="player_{{ song.title | replace(' ', '_') | lower }}" controls>
+          <source src="{{ song.file }}" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+
+  <!-- 🎤 Floating Mic Button -->
+  <button id="mic-btn" title="Voice Assistant">🎤</button>
+
+  <!-- 📜 Script -->
+  <script>
+    function filterSongs() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.song-card');
+      cards.forEach(card => {
+        const title = card.querySelector('h3').innerText.toLowerCase();
+        card.style.display = title.includes(input) ? 'block' : 'none';
+      });
+    }
+
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    window.onload = function () {
+      const autoplaySong = getQueryParam('autoplay');
+      if (autoplaySong) {
+        const playerId = `player_${autoplaySong.toLowerCase().replace(/ /g, '_')}`;
+        const player = document.getElementById(playerId);
+
+        if (player) {
+          player.play().catch(() => {
+            const btn = document.createElement("button");
+            btn.innerText = `▶ Click to Play "${autoplaySong}"`;
+            btn.style.position = "fixed";
+            btn.style.bottom = "30px";
+            btn.style.right = "30px";
+            btn.style.padding = "15px 25px";
+            btn.style.fontSize = "16px";
+            btn.style.background = "#ff4081";
+            btn.style.color = "#fff";
+            btn.style.border = "none";
+            btn.style.borderRadius = "12px";
+            btn.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
+            btn.style.cursor = "pointer";
+            btn.style.zIndex = "1000";
+
+            btn.onclick = () => {
+              player.play();
+              btn.remove();
+            };
+
+            document.body.appendChild(btn);
+          });
+        } else {
+          console.warn("❗ No player found for:", playerId);
+        }
+      }
+    };
+
+    function startVoiceAssistant() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        alert("Speech Recognition is not supported in this browser.");
+        return;
+      }
+
+      const recognition = new SpeechRecognition();
+      recognition.continuous = true;
+      recognition.lang = 'en-US';
+
+      recognition.onstart = function () {
+        console.log("🎙️ Voice assistant activated.");
+        const synth = window.speechSynthesis;
+        const utterThis = new SpeechSynthesisUtterance("Hello! I'm your voice assistant. You can say Play any song, Detect mood, or Show videos.");
+        synth.speak(utterThis);
+      };
+
+      recognition.onresult = function (event) {
+        const transcript = event.results[event.results.length - 1][0].transcript.toLowerCase();
+        console.log("🗣️ Heard:", transcript);
+
+        const songMap = {
+          "angry": "Angry",
+          "arcade": "Arcade",
+          "beat it": "Beat It",
+          "before you go": "Before You Go",
+          "believer": "Believer",
+          "blinding lights": "Blinding Lights",
+          "disgust": "Disgust",
+          "fear": "Fear",
+          "girls like you": "Girls Like You",
+          "happier": "Happier",
+          "kammani ee premalekhani": "Kammani Ee Premalekhani",
+          "memories": "Memories",
+          "mental madhilo": "Mental Madhilo",
+          "neutral": "Neutral",
+          "o cheliya": "O Cheliya",
+          "paper rings": "Paper Rings",
+          "perfect": "Perfect",
+          "sahana": "Sahana",
+          "someone you loved": "Someone You Loved",
+          "sundari nuvve": "Sundari Nuvve",
+          "the nights": "The Nights",
+          "they dont care about us": "They Dont Care About Us",
+          "until i found you": "Until I Found You",
+          "watermelon sugar": "Watermelon Sugar - Harry Styles",
+          "yamuna thatilo": "Yamuna Thatilo",
+          "yedho adaganaa": "Yedho Adaganaa"
+        };
+
+        for (const key in songMap) {
+          if (transcript.includes("play " + key)) {
+            window.location.href = "/play-song/" + encodeURIComponent(songMap[key]);
+            return;
+          }
+        }
+
+        if (transcript.includes("detect mood")) {
+          window.location.href = "/mood";
+        } else if (transcript.includes("show videos")) {
+          window.location.href = "/videos";
+        }
+      };
+
+      recognition.onerror = function (event) {
+        console.error("Voice recognition error:", event.error);
+      };
+
+      recognition.start();
+    }
+
+    document.getElementById("mic-btn").addEventListener("click", () => {
+      startVoiceAssistant();
+    });
+  </script>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

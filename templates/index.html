@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auraflows-Virtual Radio</title>
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> -->
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/banner.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/title.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/mdh1.css') }}"> tjis is duplicate of original its woirking -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/mooddetectorhome.css') }}">  
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/ourmission.css') }}"> 
+
+
+</head>
+<body>
+
+
+  {% include 'components/banner.html' %}
+  {% include 'components/title.html' %}
+  
+
+  <section id="welcome">
+    <!-- Welcome content -->
+    <div class="welcome-section">
+        <h1 class="main-title">AuraFlows</h1>
+        <h2 class="subtitle">Feel it.</h2>
+        <h2 class="subtitle">Flow with it.</h2>
+        <div class="content-wrapper">
+            <p class="description">Elevate Your Mood with Aura-Infused Music</p>
+            <a href="{{ url_for('home') }}" class="cta-button">Discover Now</a>
+        </div>
+    </div>    
+  </section>
+
+  <section id="mood-section1">
+    <!-- Mood detector button -->
+     <!-- Mood-Enhancing Soundscapes Section -->
+<!-- <section class="mood-section"> -->
+    <div class = container1> 
+    <div class="text-content">
+      <h1>Mood-Enhancing Soundscapes</h1>
+      <p>Immerse in Serenity and Harmony</p>
+      <a href="{{ url_for('mood_page') }}" class="explore-button">Explore Now</a>
+    </div>
+    <div class="image-content">
+      <img src="{{ url_for('static', filename='assets/grok_image_final.png') }}" alt="Emojis" />
+    </div>
+  </div>
+  </section>
+  <!-- </section> -->
+
+  <section id="mission">
+    <!-- Mission -->
+    <!-- <section id="mission" class="mission-section"> -->
+      <div class="container">
+       
+      
+    
+      <h1 class="mission-title">The AuraFlows Experience</h1>
+      <p class="mission-description">
+        At AuraFlows, we are dedicated to curating mood-enhancing music that resonates<br>
+        with your soul. Our selections are designed to elevate your energy, promote<br>
+        relaxation, and inspire positivity.
+      </p>
+    
+      <div class="icons-wrapper">
+        <div class="icons-container">
+          <div class="icon-item"><p>Energetic</p></div>
+          <div class="icon-item"><p>Soothing</p></div>
+          <div class="icon-item"><p>Uplifting</p></div>
+          <div class="icon-item"><p>Calming</p></div>
+          <div class="icon-item"><p>Motivational</p></div>
+        </div>
+      </div>
+    
+      <p class="mission-footer">
+        Immerse yourself in the transformative power of music. Let our carefully crafted playlists guide your emotions and enhance your well-being. Discover a new way to flow with the rhythm of life.
+      </p>
+      
+    </div>
+    <!-- </section> -->
+    
+  </section>
+
+  
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+
+</body>
+</html>

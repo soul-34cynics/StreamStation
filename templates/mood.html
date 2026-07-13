@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mood Detection 🎭</title>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/banner.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/title.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    body{
+      background-color: #d0d098;
+    }
+    /* for h1 tag */
+    h1 {
+      text-align: center;
+      padding-top: 30px;
+      font-family: 'lora', serif;
+      color: #334526;
+      
+    }
+
+    /* Center the camera preview */
+    .camera-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  {% include 'components/banner.html' %} 
+  {% include 'components/title.html' %}
+  <header>
+    <h1>Mood Detector</h1>
+    <!-- <a href="/" style="color: white; text-decoration: none;">⬅️ Back to Home</a> -->
+  </header>
+
+  <main style="text-align: center;">
+    <!-- ✅ CAMERA PREVIEW CENTERED -->
+    <div class="camera-container">
+      <video id="videoPreview" autoplay playsinline style="width: 600px; display: none; border-radius: 20px;"></video>
+    </div>
+
+    <button class="detect-button" onclick="startMoodDetection()">Aura Detection</button>
+    
+    <div id="moodResult" class="song-container" style="margin-top: 30px; color:#334526"></div>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
