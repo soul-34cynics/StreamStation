@@ -1,0 +1,47 @@
+.titlebar {
+    display: flex;
+    align-items: center;
+    background-color: #f5f3e2;
+    padding: 10px 20px;
+    margin-top: -1em;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+    margin-right: auto;
+}
+
+.logo {
+    width: 40px;
+    height: auto;
+}
+
+.logo-text {
+    font-size: 34px;
+    font-weight: bold;
+    font-family: "Lora", serif;
+    color: #2c411c;
+    margin-left: 1px;
+}
+
+.logo-text1 {
+    font-size: 26px;
+    font-family: "Arial", sans-serif;
+    font-style: italic;
+    color: #2c411c;
+    margin-left: 8px;
+}
+
+.navigation a {
+    margin: 0 90px;
+    text-decoration: none;
+    color: #2c411c;
+    font-size: 17px;
+}
+
+.navigation a:hover {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    font-weight: 550;
+}

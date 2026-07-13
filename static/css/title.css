@@ -1,0 +1,53 @@
+.titlebar {
+    display: flex;
+    align-items: center;
+    background-color: #f5f3e2;
+    padding: 10px 20px;
+    margin-top: -1em;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Some spacing between logo and nav */
+}
+
+.logo {
+    width: 40px;
+    height: auto;
+}
+
+.logo-text {
+    font-size: 34px;
+    font-weight: bold;
+    font-family: "Lora", serif;
+    color: #3b5229;
+    margin-left: 1px;
+}
+
+.logo-text1 {
+    font-size: 26px;
+    font-family: "Arial", sans-serif;
+    font-style: italic;
+    color: #3c512b;
+    margin-left: 8px;
+}
+
+.navigation {
+    display: flex;
+    flex: 1; /* take up remaining space */
+    justify-content: space-evenly; /* evenly distribute nav links */
+    align-items: center;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #3c512b;
+    font-size: 17px;
+    transition: all 0.3s ease;
+}
+
+.navigation a:hover {
+    text-shadow: 2px 2px 4px rgba(20, 65, 26, 0.25);
+    font-weight: 550;
+}

@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    font-family: 'Arial', serif;
+}
+
+.container1 {
+    display: flex;
+    align-items: center;
+    background-color: #f0e6b8; /* Light yellow background */
+    padding: 2rem;
+    border-radius: 0; /* Optional rounded corners - 8px*/
+}
+
+.text-content {
+    flex: 1;
+    padding-right: 2rem;
+    color: #414e13;
+}
+
+.text-content h1 {
+    font-size: 3rem; /* Main title size */
+    margin: 0;
+    /*font-weight: bold;*/
+    font-family: 'Lora', serif;
+    
+}
+
+.text-content p {
+    font-size: 1.25rem; /* Subtitle size */
+    margin: 0.5rem 0 1.5rem;
+}
+
+.explore-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #414e13; /* Button color */
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+}
+/* explore button hover */
+.explore-button:hover {
+    background-color: #222f0b; /* Button color chnage */
+    color: white;
+    
+}
+
+.image-content {
+    flex: 0.85;
+}
+
+.image-content img {
+    width: 90%; /* Makes the image responsive */
+    border-radius: 10px; /* Optional rounded corners for the image */
+}

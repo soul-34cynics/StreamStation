@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    font-family: 'Lora', serif;
+    margin-top: -1em;
+}
+
+.welcome-section {
+    /*background-image: url('{{ url_for('static', filename='assets/Welcome_bg.png') }}');*/
+    background-image: url('../assets/Welcome_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.main-title {
+    font-size: 148px;
+    font-weight: bold;
+    color: #f6e9b3;
+    margin: 0 0 10px 0;
+}
+
+.subtitle {
+    font-size: 135px;
+    font-weight: bold;
+    color: #f6e9b3;
+    margin: 0;
+    line-height: 1;
+    animation-delay: 0.5s;
+}
+
+.main-title, .subtitle {
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.description {
+    font-size: 24px;
+    color: #e6e4d8;
+}
+
+.cta-button {
+    background-color: #e6e4d8;
+    color: #4A4E3E;
+    font-family: 'Helvetica Neue', sans-serif;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #E5D89A;
+    color: #4A4E3E;
+}
