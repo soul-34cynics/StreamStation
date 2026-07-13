@@ -1,0 +1,13 @@
+<div class="titlebar">
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Logo" class="logo">
+        <span class="logo-text">AF</span>
+        <span class="logo-text1">presented by streamstation</span>
+    </div>
+    <nav class="navigation">
+        <a href="{{ url_for('home1')}}">Home</a>
+        <a href="{{ url_for('home') }}">Search</a>
+        <a href="{{ url_for('mood_page') }}">Mood Detector</a>
+        <a href="{{ url_for('video_page') }}">Videos</a>
+    </nav>
+</div>
